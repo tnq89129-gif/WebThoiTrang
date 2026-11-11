@@ -122,7 +122,8 @@
 
   function getAppRoot() {
     const routeIndex = location.pathname.search(/\/(?:NguoiDung|QuanTri)\//);
-    return routeIndex >= 0 ? location.pathname.slice(0, routeIndex) : "";
+    if (routeIndex >= 0) return location.pathname.slice(0, routeIndex);
+    return location.pathname.replace(/\/(?:index\.html)?\/?$/i, "");
   }
 
   function ensureShopApi() {
